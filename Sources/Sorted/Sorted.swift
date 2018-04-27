@@ -111,6 +111,25 @@ extension SortedCollection where Self: RandomAccessCollection, Element: Equatabl
 	}
 }
 
+/*
+/// Inserts the element in the correct position in a sorted array.
+///
+/// - Parameter element: The element to insert.
+/// - Returns: The index where the element was inserted.
+@discardableResult
+public mutating func sorted_insert(_ element: Element) -> Index {
+let index = insertionIndex(for: element, in: startIndex..<endIndex)
+self.insert(element, at: index)
+return index
+}
+
+/// Checks if a sorted array contains an element.
+public func sorted_contains(_ element: Element) -> Bool {
+let index = insertionIndex(for: element, in: startIndex..<endIndex)
+return (index != endIndex) && (self[index] == element)
+}
+*/
+
 
 extension Range: SortedCollection
 where Bound: Strideable, Bound.Stride: SignedInteger { }
