@@ -21,6 +21,7 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		BAEB1B122093C0230048777F /* DefaultCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAEB1B112093C0230048777F /* DefaultCollection.swift */; };
 		OBJ_22 /* Sorted.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_9 /* Sorted.swift */; };
 		OBJ_29 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_6 /* Package.swift */; };
 		OBJ_40 /* SortedTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_12 /* SortedTests.swift */; };
@@ -46,6 +47,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BAEB1B112093C0230048777F /* DefaultCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultCollection.swift; sourceTree = "<group>"; };
 		OBJ_12 /* SortedTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortedTests.swift; sourceTree = "<group>"; };
 		OBJ_13 /* XCTestManifests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCTestManifests.swift; sourceTree = "<group>"; };
 		OBJ_6 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
@@ -123,6 +125,7 @@
 			isa = PBXGroup;
 			children = (
 				OBJ_9 /* Sorted.swift */,
+				BAEB1B112093C0230048777F /* DefaultCollection.swift */,
 			);
 			name = Sorted;
 			path = Sources/Sorted;
@@ -212,6 +215,7 @@
 			buildActionMask = 0;
 			files = (
 				OBJ_22 /* Sorted.swift in Sources */,
+				BAEB1B122093C0230048777F /* DefaultCollection.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
