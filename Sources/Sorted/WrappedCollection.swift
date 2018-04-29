@@ -1,35 +1,31 @@
 //
-//  DefaultCollection.swift
-//  Sorted
-//
 //  Created by Kåre Morstøl on 27/04/2018.
+//  Many SortedArray methods are from https://github.com/ole/SortedArray
 //
 
 
-protocol DefaultCollection: Collection where Index == MyElements.Index, Element == MyElements.Element {
-	associatedtype MyElements: Collection
-	var elements: MyElements { get }
+protocol WrappedCollection: Collection where Index == Elements.Index, Element == Elements.Element {
+	associatedtype Elements: Collection
+	var elements: Elements { get }
 }
 
-extension DefaultCollection {
-	var startIndex: MyElements.Index { return elements.startIndex }
-	var endIndex: MyElements.Index { return elements.endIndex }
-	subscript(position: MyElements.Index) -> Element { return elements[position] }
+extension WrappedCollection {
+	var startIndex: Elements.Index { return elements.startIndex }
+	var endIndex: Elements.Index { return elements.endIndex }
+	subscript(position: Elements.Index) -> Element { return elements[position] }
 	func index(after i: Index) -> Index { return elements.index(after: i) }
-	func makeIterator() -> MyElements.Iterator { return elements.makeIterator() }
+	func makeIterator() -> Elements.Iterator { return elements.makeIterator() }
 }
 
 
-struct SortedArray<Element: Comparable>: DefaultCollection, SortedCollection {
+struct SortedArray<Element: Comparable>: WrappedCollection, SortedCollection {
 	var elements: [Element]
-
-	public typealias Comparator<A> = (A, A) -> Bool
 	let areInIncreasingOrder: (Element, Element) -> Bool
 }
 
 extension SortedArray {
 	@discardableResult
-	mutating func insert(_ element: Element) -> MyElements.Index {
+	mutating func insert(_ element: Element) -> Elements.Index {
 		let i = insertionIndex(for: element)
 		elements.insert(element, at: i)
 		return i
@@ -40,15 +36,14 @@ extension SortedArray {
 	/// Initializes an empty array.
 	///
 	/// - Parameter areInIncreasingOrder: The comparison predicate the array should use to sort its elements.
-	public init(areInIncreasingOrder: @escaping Comparator<Element>) {
+	public init(areInIncreasingOrder: @escaping (Element, Element) -> Bool) {
 		self.elements = []
 		self.areInIncreasingOrder = areInIncreasingOrder
 	}
 
 	/// Initializes the array with a sequence of unsorted elements and a comparison predicate.
-	public init<S: Sequence>(unsorted: S, areInIncreasingOrder: @escaping Comparator<Element>) where S.Iterator.Element == Element {
-		let sorted = unsorted.sorted(by: areInIncreasingOrder)
-		self.elements = sorted
+	public init<S: Sequence>(unsorted: S, areInIncreasingOrder: @escaping (Element, Element) -> Bool) where S.Iterator.Element == Element {
+		self.elements = unsorted.sorted(by: areInIncreasingOrder)
 		self.areInIncreasingOrder = areInIncreasingOrder
 	}
 
@@ -57,7 +52,7 @@ extension SortedArray {
 	/// This is faster than `init(unsorted:areInIncreasingOrder:)` because the elements don't have to sorted again.
 	///
 	/// - Precondition: `sorted` is sorted according to the given comparison predicate. If you violate this condition, the behavior is undefined.
-	public init<S: Sequence>(sorted: S, areInIncreasingOrder: @escaping Comparator<Element>) where S.Iterator.Element == Element {
+	public init<S: Sequence>(sorted: S, areInIncreasingOrder: @escaping (Element, Element) -> Bool) where S.Iterator.Element == Element {
 		self.elements = Array(sorted)
 		self.areInIncreasingOrder = areInIncreasingOrder
 	}

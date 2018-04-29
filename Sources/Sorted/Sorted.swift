@@ -61,8 +61,7 @@ extension SortedCollection where Self: RandomAccessCollection {
 
 	/// The index to use if you were to insert this element.
 	///
-	/// - Parameters:
-	///   - element: The element to hypothetically insert.
+	/// - Parameter element: The element to hypothetically insert.
 	/// - Note: If the element already occurs multiple times, the index to 1 of those occurrences will be returned.
 	func insertionIndex(for element: Element) -> Index {
 		return insertionIndex(for: element, in: startIndex..<endIndex)
@@ -83,8 +82,7 @@ extension SortedCollection where Self: RandomAccessCollection, Element: Equatabl
 
 	/// The index of the first occurrence of this element.
 	///
-	/// - Parameters:
-	///   - element: The element to search for.
+	/// - Parameter element: The element to search for.
 	/// - Returns: The index, or nil if not found.
 	func firstIndex(of element: Element) -> Index? {
 		return firstIndex(of: element, in: startIndex..<endIndex)
@@ -103,8 +101,7 @@ extension SortedCollection where Self: RandomAccessCollection, Element: Equatabl
 
 	/// The index of the last occurrence of this element.
 	///
-	/// - Parameters:
-	///   - element: The element to search for.
+	/// - Parameter element: The element to search for.
 	/// - Returns: The index, or nil if not found.
 	func lastIndex(of element: Element) -> Index? {
 		return lastIndex(of: element, in: startIndex..<endIndex)
