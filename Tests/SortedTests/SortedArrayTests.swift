@@ -18,15 +18,15 @@ class SortedArrayTests: XCTestCase {
     }
 */
 	func testInsertionIndex() {
-			let range = 0..<7
+		let range = 0..<7
 
-			XCTAssertEqual(range.insertionIndex(for: -2), 0)
-			XCTAssertEqual(range.insertionIndex(for: -1), 0)
-			for i in range {
-				XCTAssertEqual(range.insertionIndex(for: i), i)
-			}
-			XCTAssertEqual(range.insertionIndex(for: 8), 7)
-			XCTAssertEqual(range.insertionIndex(for: 9), 7)
+		XCTAssertEqual(range.insertionIndex(for: -2), 0)
+		XCTAssertEqual(range.insertionIndex(for: -1), 0)
+		for i in range {
+			XCTAssertEqual(range.insertionIndex(for: i), i)
+		}
+		XCTAssertEqual(range.insertionIndex(for: 7), 7)
+		XCTAssertEqual(range.insertionIndex(for: 8), 7)
 	}
 
     func testInitUnsortedSorts() {
@@ -115,71 +115,71 @@ class SortedArrayTests: XCTestCase {
 */
     func testIndexOfFindsElementInMiddle() {
         let sut = SortedArray(unsorted: ["a","z","r","k"])
-        let index = sut.index(of: "k")
+        let index = sut.firstIndex(of: "k")
         XCTAssertEqual(index, 1)
     }
 
     func testIndexOfFindsFirstElement() {
         let sut = SortedArray(sorted: 1..<10)
-        let index = sut.index(of: 1)
+        let index = sut.firstIndex(of: 1)
         XCTAssertEqual(index, 0)
     }
 
     func testIndexOfFindsLastElement() {
         let sut = SortedArray(sorted: 1..<10)
-        let index = sut.index(of: 9)
+        let index = sut.firstIndex(of: 9)
         XCTAssertEqual(index, 8)
     }
 
     func testIndexOfReturnsNilWhenNotFound() {
         let sut = SortedArray(unsorted: "Hello World")
-        let index = sut.index(of: "h")
+        let index = sut.firstIndex(of: "h")
         XCTAssertNil(index)
     }
 
     func testIndexOfReturnsNilForEmptyArray() {
         let sut = SortedArray<Int>()
-        let index = sut.index(of: 1)
+        let index = sut.firstIndex(of: 1)
         XCTAssertNil(index)
     }
 
     func testIndexOfCanDealWithSingleElementArray() {
         let sut = SortedArray<Int>(unsorted: [5])
-        let index = sut.index(of: 5)
+        let index = sut.firstIndex(of: 5)
         XCTAssertEqual(index, 0)
     }
 
     func testIndexOfFindsFirstIndexOfDuplicateElements1() {
         let sut = SortedArray(unsorted: [1,2,3,3,3,3,3,3,3,3,4,5])
-        let index = sut.index(of: 3)
+        let index = sut.firstIndex(of: 3)
         XCTAssertEqual(index, 2)
     }
 
     func testIndexOfFindsFirstIndexOfDuplicateElements2() {
         let sut = SortedArray(unsorted: [1,4,4,4,4,4,4,4,4,3,2])
-        let index = sut.index(of: 4)
+        let index = sut.firstIndex(of: 4)
         XCTAssertEqual(index, 3)
     }
 
     func testIndexOfFindsFirstIndexOfDuplicateElements3() {
         let sut = SortedArray(unsorted: String(repeating: "A", count: 10))
-        let index = sut.index(of: "A")
+        let index = sut.firstIndex(of: "A")
         XCTAssertEqual(index, 0)
     }
 
     func testIndexOfFindsFirstIndexOfDuplicateElements4() {
         let sut = SortedArray<Character>(unsorted: Array(repeating: "a", count: 100_000))
-        let index = sut.index(of: "a")
+        let index = sut.firstIndex(of: "a")
         XCTAssertEqual(index, 0)
     }
 
     func testIndexOfFindsFirstIndexOfDuplicateElements5() {
         let sourceArray = Array(repeating: 5, count: 100_000) + [1,2,6,7,8,9]
         let sut = SortedArray(unsorted: sourceArray)
-        let index = sut.index(of: 5)
+        let index = sut.firstIndex(of: 5)
         XCTAssertEqual(index, 2)
     }
-/*
+
     func testLastIndexOfFindsElementInMiddle() {
         let sut = SortedArray(unsorted: ["a","z","r","k"])
         let index = sut.lastIndex(of: "k")
@@ -193,13 +193,13 @@ class SortedArrayTests: XCTestCase {
     }
 
     func testLastIndexOfFindsLastElement() {
-        let sut = SortedArray(sorted: 1..<10)
+        let sut = SortedArray(sorted: 0...9)
         let index = sut.lastIndex(of: 9)
-        XCTAssertEqual(index, 8)
+        XCTAssertEqual(index, 9)
     }
 
     func testLastIndexOfReturnsNilWhenNotFound() {
-        let sut = SortedArray(unsorted: "Hello World".characters)
+        let sut = SortedArray(unsorted: "Hello World")
         let index = sut.lastIndex(of: "h")
         XCTAssertNil(index)
     }
@@ -229,15 +229,16 @@ class SortedArrayTests: XCTestCase {
     }
 
     func testLastIndexOfFindsLastIndexOfDuplicateElements3() {
-        let sut = SortedArray(unsorted: String(repeating: "A", count: 10).characters)
+        let sut = SortedArray(unsorted: String(repeating: "A", count: 10))
         let index = sut.lastIndex(of: "A")
         XCTAssertEqual(index, 9)
     }
-*/
+
     func testsContains() {
         let sut = SortedArray(unsorted: "Lorem ipsum")
         XCTAssertTrue(sut.contains(" "))
         XCTAssertFalse(sut.contains("a"))
+        XCTAssertFalse(sut.contains("z"))
     }
 
     func testMin() {
@@ -266,69 +267,6 @@ class SortedArrayTests: XCTestCase {
         let sut = SortedArray(unsorted: ["a", "b", "c"])
         assertElementsEqual(sut.filter { $0 != "a" }, ["b", "c"])
     }
-/*
-    func testRemoveAtIndex() {
-        var sut = SortedArray(unsorted: [3,4,2,1])
-        let removedElement = sut.remove(at: 1)
-        assertElementsEqual(sut, [1,3,4])
-        XCTAssertEqual(removedElement, 2)
-    }
-
-    func testRemoveSubrange() {
-        var sut = SortedArray(unsorted: ["a","d","c","b"])
-        sut.removeSubrange(2..<4)
-        assertElementsEqual(sut, ["a","b"])
-    }
-
-    func testRemoveFirst() {
-        var sut = SortedArray(unsorted: [3,4,2,1])
-        let removedElement = sut.removeFirst()
-        assertElementsEqual(sut, [2,3,4])
-        XCTAssertEqual(removedElement, 1)
-    }
-
-    func testRemoveFirstN() {
-        var sut = SortedArray(unsorted: [3,4,2,1])
-        sut.removeFirst(2)
-        assertElementsEqual(sut, [3,4])
-    }
-
-    func testRemoveLast() {
-        var sut = SortedArray(unsorted: [3,4,2,1])
-        let removedElement = sut.removeLast()
-        assertElementsEqual(sut, [1,2,3])
-        XCTAssertEqual(removedElement, 4)
-    }
-
-    func testRemoveLastN() {
-        var sut = SortedArray(unsorted: [3,4,2,1])
-        sut.removeLast(2)
-        assertElementsEqual(sut, [1,2])
-    }
-
-    func testRemoveAll() {
-        var sut = SortedArray(unsorted: ["a","d","c","b"])
-        sut.removeAll()
-        assertElementsEqual(sut, [])
-    }
-
-    func testRemoveElementAtBeginningPreservesSortOrder() {
-        var sut = SortedArray(unsorted: 1...3)
-        sut.remove(1)
-        assertElementsEqual(sut, [2,3])
-    }
-
-    func testRemoveElementInMiddlePreservesSortOrder() {
-        var sut = SortedArray(unsorted: 1...5)
-        sut.remove(4)
-        assertElementsEqual(sut, [1,2,3,5])
-    }
-
-    func testRemoveElementAtEndPreservesSortOrder() {
-        var sut = SortedArray(unsorted: 1...3)
-        sut.remove(3)
-        assertElementsEqual(sut, [1,2])
-    }
 
     func testImplementsEqual() {
         let sut = SortedArray(unsorted: [3,2,1])
@@ -339,7 +277,6 @@ class SortedArrayTests: XCTestCase {
         let sut = SortedArray(unsorted: 1...3)
         XCTAssertTrue(sut != SortedArray(unsorted: 1...4))
     }
-*/
 }
 
 
@@ -349,63 +286,3 @@ func assertElementsEqual<S1, S2>(_ expression1: @autoclosure () throws -> S1, _ 
 		// This should give a better error message than using XCTAssert(try expression1().elementsEqual(expression2()), ...)
 		XCTAssertEqual(Array(try expression1()), Array(try expression2()), message, file: file, line: line)
 }
-/*
-extension SortedArrayTests {
-    static var allTests : [(String, (SortedArrayTests) -> () throws -> Void)] {
-        return [
-            ("testLinuxTestSuiteIncludesAllTests", testLinuxTestSuiteIncludesAllTests),
-            ("testInitUnsortedSorts", testInitUnsortedSorts),
-            ("testInitSortedDoesntResort", testInitSortedDoesntResort),
-            ("testSortedArrayCanUseArbitraryComparisonPredicate", testSortedArrayCanUseArbitraryComparisonPredicate),
-            ("testConvenienceInitsUseLessThan", testConvenienceInitsUseLessThan),
-            ("testInsertAtBeginningPreservesSortOrder", testInsertAtBeginningPreservesSortOrder),
-            ("testInsertInMiddlePreservesSortOrder", testInsertInMiddlePreservesSortOrder),
-            ("testInsertAtEndPreservesSortOrder", testInsertAtEndPreservesSortOrder),
-            ("testInsertAtBeginningReturnsInsertionIndex", testInsertAtBeginningReturnsInsertionIndex),
-            ("testInsertInMiddleReturnsInsertionIndex", testInsertInMiddleReturnsInsertionIndex),
-            ("testInsertAtEndReturnsInsertionIndex", testInsertAtEndReturnsInsertionIndex),
-            ("testInsertInEmptyArrayReturnsInsertionIndex", testInsertInEmptyArrayReturnsInsertionIndex),
-            ("testInsertEqualElementReturnsCorrectInsertionIndex", testInsertEqualElementReturnsCorrectInsertionIndex),
-            ("testInsertContentsOfPreservesSortOrder", testInsertContentsOfPreservesSortOrder),
-            ("testIndexOfFindsElementInMiddle", testIndexOfFindsElementInMiddle),
-            ("testIndexOfFindsFirstElement", testIndexOfFindsFirstElement),
-            ("testIndexOfFindsLastElement", testIndexOfFindsLastElement),
-            ("testIndexOfReturnsNilWhenNotFound", testIndexOfReturnsNilWhenNotFound),
-            ("testIndexOfReturnsNilForEmptyArray", testIndexOfReturnsNilForEmptyArray),
-            ("testIndexOfCanDealWithSingleElementArray", testIndexOfCanDealWithSingleElementArray),
-            ("testIndexOfFindsFirstIndexOfDuplicateElements1", testIndexOfFindsFirstIndexOfDuplicateElements1),
-            ("testIndexOfFindsFirstIndexOfDuplicateElements2", testIndexOfFindsFirstIndexOfDuplicateElements2),
-            ("testIndexOfFindsFirstIndexOfDuplicateElements3", testIndexOfFindsFirstIndexOfDuplicateElements3),
-            ("testIndexOfFindsFirstIndexOfDuplicateElements4", testIndexOfFindsFirstIndexOfDuplicateElements4),
-            ("testIndexOfFindsFirstIndexOfDuplicateElements5", testIndexOfFindsFirstIndexOfDuplicateElements4),
-            ("testLastIndexOfFindsElementInMiddle", testLastIndexOfFindsElementInMiddle),
-            ("testLastIndexOfFindsFirstElement", testLastIndexOfFindsFirstElement),
-            ("testLastIndexOfFindsLastElement", testLastIndexOfFindsLastElement),
-            ("testLastIndexOfReturnsNilWhenNotFound", testLastIndexOfReturnsNilWhenNotFound),
-            ("testLastIndexOfReturnsNilForEmptyArray", testLastIndexOfReturnsNilForEmptyArray),
-            ("testLastIndexOfCanDealWithSingleElementArray", testLastIndexOfCanDealWithSingleElementArray),
-            ("testLastIndexOfFindsLastIndexOfDuplicateElements1", testLastIndexOfFindsLastIndexOfDuplicateElements1),
-            ("testLastIndexOfFindsLastIndexOfDuplicateElements2", testLastIndexOfFindsLastIndexOfDuplicateElements2),
-            ("testLastIndexOfFindsLastIndexOfDuplicateElements3", testLastIndexOfFindsLastIndexOfDuplicateElements3),
-            ("testsContains", testsContains),
-            ("testMin", testMin),
-            ("testMax", testMax),
-            ("testCustomStringConvertible", testCustomStringConvertible),
-            ("testCustomDebugStringConvertible", testCustomDebugStringConvertible),
-            ("testFilter", testFilter),
-            ("testRemoveAtIndex", testRemoveAtIndex),
-            ("testRemoveSubrange", testRemoveSubrange),
-            ("testRemoveFirst", testRemoveFirst),
-            ("testRemoveFirstN", testRemoveFirstN),
-            ("testRemoveLast", testRemoveLast),
-            ("testRemoveLastN", testRemoveLastN),
-            ("testRemoveAll", testRemoveAll),
-            ("testRemoveElementAtBeginningPreservesSortOrder", testRemoveElementAtBeginningPreservesSortOrder),
-            ("testRemoveElementInMiddlePreservesSortOrder", testRemoveElementInMiddlePreservesSortOrder),
-            ("testRemoveElementAtEndPreservesSortOrder", testRemoveElementAtEndPreservesSortOrder),
-            ("testImplementsEqual", testImplementsEqual),
-            ("testImplementsNotEqual", testImplementsNotEqual),
-        ]
-    }
-}
-*/

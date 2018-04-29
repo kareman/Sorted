@@ -6,7 +6,11 @@
 public struct SortedArray<Element>: Collection, SortedCollection {
 	public typealias Elements = [Element]
 	var elements: Elements
+
+	// SortedCollection requirement
 	public let areInIncreasingOrder: (Element, Element) -> Bool
+
+	// Collection requirements
 	public var startIndex: Elements.Index { return elements.startIndex }
 	public var endIndex: Elements.Index { return elements.endIndex }
 	public subscript(position: Elements.Index) -> Element { return elements[position] }
@@ -77,3 +81,8 @@ extension SortedArray where Element: Comparable {
 	}
 }
 
+extension SortedArray: Equatable where Element: Equatable {
+	public static func == (lhs: SortedArray<Element>, rhs: SortedArray<Element>) -> Bool {
+		return lhs.elements == rhs.elements
+	}
+}

@@ -2,6 +2,8 @@
 public protocol SortedCollection: Collection {
 	/// An ordering for all elements in the collection.
 	var areInIncreasingOrder: (Element, Element) -> Bool { get }
+
+	/// The index for this element if it were to be inserted into the collection.
 	func insertionIndex(for element: Element) -> Index
 }
 
@@ -16,7 +18,7 @@ extension SortedCollection where Element: Comparable {
 }
 
 extension SortedCollection {
-	public func insertionIndex(for element: Element) -> Index {
+	fileprivate func _insertionIndexFromStart(for element: Element) -> Index {
 		for index in self.indices {
 			if !areInIncreasingOrder(self[index], element) {
 				return index
@@ -24,25 +26,28 @@ extension SortedCollection {
 		}
 		return endIndex
 	}
+
+	public func insertionIndex(for element: Element) -> Index {
+		return _insertionIndexFromStart(for: element)
+	}
 }
-/*
-extension SortedCollection where Self: BidirectionalCollection, Element: Equatable {
-func insertionIndex(for element: Element) -> Index {
-if !isEmpty {
-let secondLastIndex = index(before: endIndex)
-guard areInIncreasingOrder(element, self[secondLastIndex]) else {
-return secondLastIndex
+
+extension SortedCollection where Self: BidirectionalCollection {
+	public func insertionIndex(for element: Element) -> Index {
+		if let last = last, areInIncreasingOrder(last, element) {
+			return endIndex
+		}
+		return _insertionIndexFromStart(for: element)
+	}
 }
+
+extension SortedCollection where Element: Equatable {
+	public func contains(_ element: Element) -> Bool {
+		let i = insertionIndex(for: element)
+		return (i != endIndex && self[i] == element)
+	}
 }
-for index in self.indices {
-if !areInIncreasingOrder(self[index], element) {
-return index
-}
-}
-return endIndex
-}
-}
-*/
+
 
 extension RandomAccessCollection {
 	/// The value in the middle of this range. Returns nil if the range is empty.
@@ -53,6 +58,7 @@ extension RandomAccessCollection {
 }
 
 extension SortedCollection where Self: RandomAccessCollection {
+	/// Binary search for element in range.
 	fileprivate func insertionIndex(for element: Element, in range: Range<Index>) -> Index {
 		guard let middle = index(inMiddleOf: range) else { return range.upperBound }
 		if areInIncreasingOrder(self[middle], element) {
@@ -88,16 +94,17 @@ extension SortedCollection where Self: RandomAccessCollection, Element: Equatabl
 	///
 	/// - Parameter element: The element to search for.
 	/// - Returns: The index, or nil if not found.
-	func firstIndex(of element: Element) -> Index? {
+	public func firstIndex(of element: Element) -> Index? {
 		return firstIndex(of: element, in: startIndex..<endIndex)
 	}
 
 	fileprivate func lastIndex(of element: Element, in range: Range<Index>) -> Index? {
 		guard let middle = index(inMiddleOf: range) else {
+			guard range.upperBound > startIndex else { return nil }
 			let index = self.index(before: range.upperBound)
 			return (index != endIndex && self[index] == element) ? index : nil
 		}
-		if areInIncreasingOrder(self[middle], element) {
+		if areInIncreasingOrder(element, self[middle]) {
 			return lastIndex(of: element, in: range.lowerBound..<middle)
 		}
 		return lastIndex(of: element, in: index(after: middle)..<range.upperBound)
@@ -107,31 +114,11 @@ extension SortedCollection where Self: RandomAccessCollection, Element: Equatabl
 	///
 	/// - Parameter element: The element to search for.
 	/// - Returns: The index, or nil if not found.
-	func lastIndex(of element: Element) -> Index? {
+	public func lastIndex(of element: Element) -> Index? {
 		return lastIndex(of: element, in: startIndex..<endIndex)
 	}
 }
 
-
-
-/*
-/// Inserts the element in the correct position in a sorted array.
-///
-/// - Parameter element: The element to insert.
-/// - Returns: The index where the element was inserted.
-@discardableResult
-public mutating func sorted_insert(_ element: Element) -> Index {
-let index = insertionIndex(for: element, in: startIndex..<endIndex)
-self.insert(element, at: index)
-return index
-}
-
-/// Checks if a sorted array contains an element.
-public func sorted_contains(_ element: Element) -> Bool {
-let index = insertionIndex(for: element, in: startIndex..<endIndex)
-return (index != endIndex) && (self[index] == element)
-}
-*/
 
 
 extension Range: SortedCollection
