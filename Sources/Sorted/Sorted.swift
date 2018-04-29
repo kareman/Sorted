@@ -5,6 +5,10 @@ protocol SortedCollection: Collection {
 	func insertionIndex(for element: Element) -> Index
 }
 
+protocol MutableSortedCollection: SortedCollection {
+	mutating func insert(_: Element) -> Index
+}
+
 extension SortedCollection where Element: Comparable {
 	var areInIncreasingOrder: (Element, Element) -> Bool {
 		return (<)

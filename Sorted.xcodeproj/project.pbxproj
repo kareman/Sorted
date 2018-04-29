@@ -21,7 +21,7 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		BAEB1B122093C0230048777F /* WrappedCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAEB1B112093C0230048777F /* WrappedCollection.swift */; };
+		BAEB1B122093C0230048777F /* SortedArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAEB1B112093C0230048777F /* SortedArray.swift */; };
 		BAEB1B152093DBB50048777F /* SortedArrayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAEB1B132093DB720048777F /* SortedArrayTests.swift */; };
 		OBJ_22 /* Sorted.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_9 /* Sorted.swift */; };
 		OBJ_29 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_6 /* Package.swift */; };
@@ -48,7 +48,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		BAEB1B112093C0230048777F /* WrappedCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WrappedCollection.swift; sourceTree = "<group>"; };
+		BAEB1B112093C0230048777F /* SortedArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortedArray.swift; sourceTree = "<group>"; };
 		BAEB1B132093DB720048777F /* SortedArrayTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SortedArrayTests.swift; sourceTree = "<group>"; };
 		OBJ_12 /* SortedTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortedTests.swift; sourceTree = "<group>"; };
 		OBJ_13 /* XCTestManifests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCTestManifests.swift; sourceTree = "<group>"; };
@@ -128,7 +128,7 @@
 			isa = PBXGroup;
 			children = (
 				OBJ_9 /* Sorted.swift */,
-				BAEB1B112093C0230048777F /* WrappedCollection.swift */,
+				BAEB1B112093C0230048777F /* SortedArray.swift */,
 			);
 			name = Sorted;
 			path = Sources/Sorted;
@@ -218,7 +218,7 @@
 			buildActionMask = 0;
 			files = (
 				OBJ_22 /* Sorted.swift in Sources */,
-				BAEB1B122093C0230048777F /* WrappedCollection.swift in Sources */,
+				BAEB1B122093C0230048777F /* SortedArray.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

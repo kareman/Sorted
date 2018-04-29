@@ -3,27 +3,17 @@
 //  Many SortedArray methods are from https://github.com/ole/SortedArray
 //
 
-
-protocol WrappedCollection: Collection where Index == Elements.Index, Element == Elements.Element {
-	associatedtype Elements: Collection
-	var elements: Elements { get }
-}
-
-extension WrappedCollection {
+struct SortedArray<Element: Comparable>: Collection, SortedCollection {
+	typealias Elements = [Element]
+	var elements: Elements
+	let areInIncreasingOrder: (Element, Element) -> Bool
 	var startIndex: Elements.Index { return elements.startIndex }
 	var endIndex: Elements.Index { return elements.endIndex }
 	subscript(position: Elements.Index) -> Element { return elements[position] }
-	func index(after i: Index) -> Index { return elements.index(after: i) }
-	func makeIterator() -> Elements.Iterator { return elements.makeIterator() }
+	func index(after i: Elements.Index) -> Elements.Index { return elements.index(after: i) }
 }
 
-
-struct SortedArray<Element: Comparable>: WrappedCollection, SortedCollection {
-	var elements: [Element]
-	let areInIncreasingOrder: (Element, Element) -> Bool
-}
-
-extension SortedArray {
+extension SortedArray: MutableSortedCollection {
 	@discardableResult
 	mutating func insert(_ element: Element) -> Elements.Index {
 		let i = insertionIndex(for: element)
@@ -31,6 +21,14 @@ extension SortedArray {
 		return i
 	}
 }
+
+extension SortedArray: BidirectionalCollection {
+	func index(before i: Elements.Index) -> Elements.Index {
+		return elements.index(before: i)
+	}
+}
+
+extension SortedArray: RandomAccessCollection { }
 
 extension SortedArray {
 	/// Initializes an empty array.
@@ -49,7 +47,7 @@ extension SortedArray {
 
 	/// Initializes the array with a sequence that is already sorted according to the given comparison predicate.
 	///
-	/// This is faster than `init(unsorted:areInIncreasingOrder:)` because the elements don't have to sorted again.
+	/// This is faster than `init(unsorted:areInIncreasingOrder:)` because the elements don't have to be sorted again.
 	///
 	/// - Precondition: `sorted` is sorted according to the given comparison predicate. If you violate this condition, the behavior is undefined.
 	public init<S: Sequence>(sorted: S, areInIncreasingOrder: @escaping (Element, Element) -> Bool) where S.Iterator.Element == Element {
