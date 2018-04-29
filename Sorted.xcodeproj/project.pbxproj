@@ -25,7 +25,6 @@
 		BAEB1B152093DBB50048777F /* SortedArrayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAEB1B132093DB720048777F /* SortedArrayTests.swift */; };
 		OBJ_22 /* Sorted.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_9 /* Sorted.swift */; };
 		OBJ_29 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_6 /* Package.swift */; };
-		OBJ_40 /* SortedTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_12 /* SortedTests.swift */; };
 		OBJ_41 /* XCTestManifests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_13 /* XCTestManifests.swift */; };
 		OBJ_43 /* Sorted.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "Sorted::Sorted::Product" /* Sorted.framework */; };
 /* End PBXBuildFile section */
@@ -50,7 +49,6 @@
 /* Begin PBXFileReference section */
 		BAEB1B112093C0230048777F /* SortedArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortedArray.swift; sourceTree = "<group>"; };
 		BAEB1B132093DB720048777F /* SortedArrayTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SortedArrayTests.swift; sourceTree = "<group>"; };
-		OBJ_12 /* SortedTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortedTests.swift; sourceTree = "<group>"; };
 		OBJ_13 /* XCTestManifests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCTestManifests.swift; sourceTree = "<group>"; };
 		OBJ_6 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		OBJ_9 /* Sorted.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sorted.swift; sourceTree = "<group>"; };
@@ -89,7 +87,6 @@
 			isa = PBXGroup;
 			children = (
 				BAEB1B132093DB720048777F /* SortedArrayTests.swift */,
-				OBJ_12 /* SortedTests.swift */,
 				OBJ_13 /* XCTestManifests.swift */,
 			);
 			name = SortedTests;
@@ -234,7 +231,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
-				OBJ_40 /* SortedTests.swift in Sources */,
 				OBJ_41 /* XCTestManifests.swift in Sources */,
 				BAEB1B152093DBB50048777F /* SortedArrayTests.swift in Sources */,
 			);

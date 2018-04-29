@@ -17,6 +17,18 @@ class SortedArrayTests: XCTestCase {
         #endif
     }
 */
+	func testInsertionIndex() {
+			let range = 0..<7
+
+			XCTAssertEqual(range.insertionIndex(for: -2), 0)
+			XCTAssertEqual(range.insertionIndex(for: -1), 0)
+			for i in range {
+				XCTAssertEqual(range.insertionIndex(for: i), i)
+			}
+			XCTAssertEqual(range.insertionIndex(for: 8), 7)
+			XCTAssertEqual(range.insertionIndex(for: 9), 7)
+	}
+
     func testInitUnsortedSorts() {
         let sut = SortedArray(unsorted: [3,4,2,1], areInIncreasingOrder: <)
         assertElementsEqual(sut, [1,2,3,4])
