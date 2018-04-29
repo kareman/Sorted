@@ -3,7 +3,7 @@
 //  Many SortedArray methods are from https://github.com/ole/SortedArray
 //
 
-public struct SortedArray<Element: Comparable>: Collection, SortedCollection {
+public struct SortedArray<Element>: Collection, SortedCollection {
 	public typealias Elements = [Element]
 	var elements: Elements
 	public let areInIncreasingOrder: (Element, Element) -> Bool
