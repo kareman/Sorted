@@ -39,12 +39,33 @@ extension SortedCollection where Self: BidirectionalCollection {
 		}
 		return _insertionIndexFromStart(for: element)
 	}
+
+	fileprivate func _insertionIndexFromEnd(for element: Element) -> Index {
+		for index in self.indices.reversed() {
+			if !areInIncreasingOrder(element, self[index]) {
+				return index
+			}
+		}
+		return startIndex
+	}
 }
 
 extension SortedCollection where Element: Equatable {
 	public func contains(_ element: Element) -> Bool {
 		let i = insertionIndex(for: element)
 		return (i != endIndex && self[i] == element)
+	}
+
+	public func firstIndex(of element: Element) -> Index? {
+		let i = insertionIndex(for: element)
+		return (i != endIndex && self[i] == element) ? i : nil
+	}
+}
+
+extension SortedCollection where Self: BidirectionalCollection, Element: Equatable {
+	public func lastIndex(of element: Element) -> Index? {
+		let i = _insertionIndexFromEnd(for: element)
+		return (i != endIndex && self[i] == element) ? i : nil
 	}
 }
 
