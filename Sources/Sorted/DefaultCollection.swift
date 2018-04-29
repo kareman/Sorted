@@ -28,6 +28,15 @@ struct SortedArray<Element: Comparable>: DefaultCollection, SortedCollection {
 }
 
 extension SortedArray {
+	@discardableResult
+	mutating func insert(_ element: Element) -> MyElements.Index {
+		let i = insertionIndex(for: element)
+		elements.insert(element, at: i)
+		return i
+	}
+}
+
+extension SortedArray {
 	/// Initializes an empty array.
 	///
 	/// - Parameter areInIncreasingOrder: The comparison predicate the array should use to sort its elements.
