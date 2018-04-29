@@ -1,22 +1,22 @@
 
-protocol SortedCollection: Collection {
+public protocol SortedCollection: Collection {
 	/// An ordering for all elements in the collection.
 	var areInIncreasingOrder: (Element, Element) -> Bool { get }
 	func insertionIndex(for element: Element) -> Index
 }
 
-protocol MutableSortedCollection: SortedCollection {
+public protocol MutableSortedCollection: SortedCollection {
 	mutating func insert(_: Element) -> Index
 }
 
 extension SortedCollection where Element: Comparable {
-	var areInIncreasingOrder: (Element, Element) -> Bool {
+	public var areInIncreasingOrder: (Element, Element) -> Bool {
 		return (<)
 	}
 }
 
 extension SortedCollection {
-	func insertionIndex(for element: Element) -> Index {
+	public func insertionIndex(for element: Element) -> Index {
 		for index in self.indices {
 			if !areInIncreasingOrder(self[index], element) {
 				return index
@@ -67,7 +67,7 @@ extension SortedCollection where Self: RandomAccessCollection {
 	///
 	/// - Parameter element: The element to hypothetically insert.
 	/// - Note: If the element already occurs multiple times, the index to 1 of those occurrences will be returned.
-	func insertionIndex(for element: Element) -> Index {
+	public func insertionIndex(for element: Element) -> Index {
 		return insertionIndex(for: element, in: startIndex..<endIndex)
 	}
 }

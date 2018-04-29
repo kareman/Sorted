@@ -3,19 +3,19 @@
 //  Many SortedArray methods are from https://github.com/ole/SortedArray
 //
 
-struct SortedArray<Element: Comparable>: Collection, SortedCollection {
-	typealias Elements = [Element]
+public struct SortedArray<Element: Comparable>: Collection, SortedCollection {
+	public typealias Elements = [Element]
 	var elements: Elements
-	let areInIncreasingOrder: (Element, Element) -> Bool
-	var startIndex: Elements.Index { return elements.startIndex }
-	var endIndex: Elements.Index { return elements.endIndex }
-	subscript(position: Elements.Index) -> Element { return elements[position] }
-	func index(after i: Elements.Index) -> Elements.Index { return elements.index(after: i) }
+	public let areInIncreasingOrder: (Element, Element) -> Bool
+	public var startIndex: Elements.Index { return elements.startIndex }
+	public var endIndex: Elements.Index { return elements.endIndex }
+	public subscript(position: Elements.Index) -> Element { return elements[position] }
+	public func index(after i: Elements.Index) -> Elements.Index { return elements.index(after: i) }
 }
 
 extension SortedArray: MutableSortedCollection {
 	@discardableResult
-	mutating func insert(_ element: Element) -> Elements.Index {
+	public mutating func insert(_ element: Element) -> Elements.Index {
 		let i = insertionIndex(for: element)
 		elements.insert(element, at: i)
 		return i
@@ -23,7 +23,7 @@ extension SortedArray: MutableSortedCollection {
 }
 
 extension SortedArray: BidirectionalCollection {
-	func index(before i: Elements.Index) -> Elements.Index {
+	public func index(before i: Elements.Index) -> Elements.Index {
 		return elements.index(before: i)
 	}
 }
@@ -58,21 +58,21 @@ extension SortedArray {
 
 extension SortedArray where Element: Comparable {
 	/// Initializes an empty sorted array. Uses `<` as the comparison predicate.
-	init() {
+	public init() {
 		self.init(areInIncreasingOrder: <)
 	}
 
 	/// Initializes the array with a sequence of unsorted elements. Uses `<` as the comparison predicate.
-	init<S: Sequence>(unsorted: S) where S.Iterator.Element == Element {
+	public init<S: Sequence>(unsorted: S) where S.Iterator.Element == Element {
 		self.init(unsorted: unsorted, areInIncreasingOrder: <)
 	}
 
 	/// Initializes the array with a sequence that is already sorted according to the `<` comparison predicate. Uses `<` as the comparison predicate.
 	///
-	/// This is faster than `init(unsorted:)` because the elements don't have to sorted again.
+	/// This is faster than `init(unsorted:)` because the elements don't have to be sorted again.
 	///
 	/// - Precondition: `sorted` is sorted according to the `<` predicate. If you violate this condition, the behavior is undefined.
-	init<S: Sequence>(sorted: S) where S.Iterator.Element == Element {
+	public init<S: Sequence>(sorted: S) where S.Iterator.Element == Element {
 		self.init(sorted: sorted, areInIncreasingOrder: <)
 	}
 }

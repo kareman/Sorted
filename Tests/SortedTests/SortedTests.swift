@@ -1,5 +1,5 @@
 import XCTest
-@testable import Sorted
+import Sorted
 
 final class SortedTests: XCTestCase {
 	func testExample() {
