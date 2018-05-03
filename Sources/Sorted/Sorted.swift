@@ -8,6 +8,7 @@ public protocol SortedCollection: Collection {
 }
 
 public protocol MutableSortedCollection: SortedCollection {
+	/// Insert the element into the correct position in this sorted collection, and returns the index.
 	mutating func insert(_: Element) -> Index
 }
 
@@ -56,6 +57,7 @@ extension SortedCollection where Element: Equatable {
 		return (i != endIndex && self[i] == element)
 	}
 
+	/// The index of the first occurrence of this element.
 	public func firstIndex(of element: Element) -> Index? {
 		let i = insertionIndex(for: element)
 		return (i != endIndex && self[i] == element) ? i : nil
@@ -63,6 +65,7 @@ extension SortedCollection where Element: Equatable {
 }
 
 extension SortedCollection where Self: BidirectionalCollection, Element: Equatable {
+	/// The index of the last occurrence of this element.
 	public func lastIndex(of element: Element) -> Index? {
 		let i = _insertionIndexFromEnd(for: element)
 		return (i != endIndex && self[i] == element) ? i : nil
@@ -90,10 +93,6 @@ extension SortedCollection where Self: RandomAccessCollection {
 		return middle
 	}
 
-	/// The index to use if you were to insert this element.
-	///
-	/// - Parameter element: The element to hypothetically insert.
-	/// - Note: If the element already occurs multiple times, the index to 1 of those occurrences will be returned.
 	public func insertionIndex(for element: Element) -> Index {
 		return insertionIndex(for: element, in: startIndex..<endIndex)
 	}
@@ -112,9 +111,6 @@ extension SortedCollection where Self: RandomAccessCollection, Element: Equatabl
 	}
 
 	/// The index of the first occurrence of this element.
-	///
-	/// - Parameter element: The element to search for.
-	/// - Returns: The index, or nil if not found.
 	public func firstIndex(of element: Element) -> Index? {
 		return firstIndex(of: element, in: startIndex..<endIndex)
 	}
@@ -132,9 +128,6 @@ extension SortedCollection where Self: RandomAccessCollection, Element: Equatabl
 	}
 
 	/// The index of the last occurrence of this element.
-	///
-	/// - Parameter element: The element to search for.
-	/// - Returns: The index, or nil if not found.
 	public func lastIndex(of element: Element) -> Index? {
 		return lastIndex(of: element, in: startIndex..<endIndex)
 	}
