@@ -6,10 +6,10 @@
 public struct SortedArray<Element>: Collection, SortedCollection {
 	public typealias Elements = [Element]
 	var elements: Elements
-
+	
 	// SortedCollection requirement
 	public let areInIncreasingOrder: (Element, Element) -> Bool
-
+	
 	// Collection requirements
 	public var startIndex: Elements.Index { return elements.startIndex }
 	public var endIndex: Elements.Index { return elements.endIndex }
@@ -42,13 +42,13 @@ extension SortedArray {
 		self.elements = []
 		self.areInIncreasingOrder = areInIncreasingOrder
 	}
-
+	
 	/// Initializes the array with a sequence of unsorted elements and a comparison predicate.
 	public init<S: Sequence>(unsorted: S, areInIncreasingOrder: @escaping (Element, Element) -> Bool) where S.Iterator.Element == Element {
 		self.elements = unsorted.sorted(by: areInIncreasingOrder)
 		self.areInIncreasingOrder = areInIncreasingOrder
 	}
-
+	
 	/// Initializes the array with a sequence that is already sorted according to the given comparison predicate.
 	///
 	/// This is faster than `init(unsorted:areInIncreasingOrder:)` because the elements don't have to be sorted again.
@@ -65,12 +65,12 @@ extension SortedArray where Element: Comparable {
 	public init() {
 		self.init(areInIncreasingOrder: <)
 	}
-
+	
 	/// Initializes the array with a sequence of unsorted elements. Uses `<` as the comparison predicate.
 	public init<S: Sequence>(unsorted: S) where S.Iterator.Element == Element {
 		self.init(unsorted: unsorted, areInIncreasingOrder: <)
 	}
-
+	
 	/// Initializes the array with a sequence that is already sorted according to the `<` comparison predicate. Uses `<` as the comparison predicate.
 	///
 	/// This is faster than `init(unsorted:)` because the elements don't have to be sorted again.
