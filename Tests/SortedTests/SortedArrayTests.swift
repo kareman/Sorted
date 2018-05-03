@@ -4,7 +4,6 @@ import Sorted
 import XCTest
 
 class SortedArrayTests: XCTestCase {
-/*
 	func testLinuxTestSuiteIncludesAllTests() {
 		#if os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
 			#if swift(>=4.0)
@@ -16,7 +15,7 @@ class SortedArrayTests: XCTestCase {
 			XCTAssertEqual(linuxTestCount, darwinTestCount, "allTests (used for testing on Linux) is missing \(darwinTestCount - linuxTestCount) tests")
 		#endif
 	}
-*/
+
 	func testInsertionIndex() {
 		let range = 0..<7
 
@@ -267,4 +266,49 @@ func assertElementsEqual<S1, S2>(_ expression1: @autoclosure () throws -> S1, _ 
 
 		// This should give a better error message than using XCTAssert(try expression1().elementsEqual(expression2()), ...)
 		XCTAssertEqual(Array(try expression1()), Array(try expression2()), message, file: file, line: line)
+}
+
+extension SortedArrayTests {
+	public static var allTests = [
+		("testLinuxTestSuiteIncludesAllTests", testLinuxTestSuiteIncludesAllTests),
+		("testInsertionIndex", testInsertionIndex),
+		("testInitUnsortedSorts", testInitUnsortedSorts),
+		("testInitSortedDoesntResort", testInitSortedDoesntResort),
+		("testSortedArrayCanUseArbitraryComparisonPredicate", testSortedArrayCanUseArbitraryComparisonPredicate),
+		("testConvenienceInitsUseLessThan", testConvenienceInitsUseLessThan),
+		("testInsertAtBeginningPreservesSortOrder", testInsertAtBeginningPreservesSortOrder),
+		("testInsertInMiddlePreservesSortOrder", testInsertInMiddlePreservesSortOrder),
+		("testInsertAtEndPreservesSortOrder", testInsertAtEndPreservesSortOrder),
+		("testInsertAtBeginningReturnsInsertionIndex", testInsertAtBeginningReturnsInsertionIndex),
+		("testInsertInMiddleReturnsInsertionIndex", testInsertInMiddleReturnsInsertionIndex),
+		("testInsertAtEndReturnsInsertionIndex", testInsertAtEndReturnsInsertionIndex),
+		("testInsertInEmptyArrayReturnsInsertionIndex", testInsertInEmptyArrayReturnsInsertionIndex),
+		("testInsertEqualElementReturnsCorrectInsertionIndex", testInsertEqualElementReturnsCorrectInsertionIndex),
+		("testIndexOfFindsElementInMiddle", testIndexOfFindsElementInMiddle),
+		("testIndexOfFindsFirstElement", testIndexOfFindsFirstElement),
+		("testIndexOfFindsLastElement", testIndexOfFindsLastElement),
+		("testIndexOfReturnsNilWhenNotFound", testIndexOfReturnsNilWhenNotFound),
+		("testIndexOfReturnsNilForEmptyArray", testIndexOfReturnsNilForEmptyArray),
+		("testIndexOfCanDealWithSingleElementArray", testIndexOfCanDealWithSingleElementArray),
+		("testIndexOfFindsFirstIndexOfDuplicateElements1", testIndexOfFindsFirstIndexOfDuplicateElements1),
+		("testIndexOfFindsFirstIndexOfDuplicateElements2", testIndexOfFindsFirstIndexOfDuplicateElements2),
+		("testIndexOfFindsFirstIndexOfDuplicateElements3", testIndexOfFindsFirstIndexOfDuplicateElements3),
+		("testIndexOfFindsFirstIndexOfDuplicateElements4", testIndexOfFindsFirstIndexOfDuplicateElements4),
+		("testIndexOfFindsFirstIndexOfDuplicateElements5", testIndexOfFindsFirstIndexOfDuplicateElements5),
+		("testLastIndexOfFindsElementInMiddle", testLastIndexOfFindsElementInMiddle),
+		("testLastIndexOfFindsFirstElement", testLastIndexOfFindsFirstElement),
+		("testLastIndexOfFindsLastElement", testLastIndexOfFindsLastElement),
+		("testLastIndexOfReturnsNilWhenNotFound", testLastIndexOfReturnsNilWhenNotFound),
+		("testLastIndexOfReturnsNilForEmptyArray", testLastIndexOfReturnsNilForEmptyArray),
+		("testLastIndexOfCanDealWithSingleElementArray", testLastIndexOfCanDealWithSingleElementArray),
+		("testLastIndexOfFindsLastIndexOfDuplicateElements1", testLastIndexOfFindsLastIndexOfDuplicateElements1),
+		("testLastIndexOfFindsLastIndexOfDuplicateElements2", testLastIndexOfFindsLastIndexOfDuplicateElements2),
+		("testLastIndexOfFindsLastIndexOfDuplicateElements3", testLastIndexOfFindsLastIndexOfDuplicateElements3),
+		("testsContains", testsContains),
+		("testMin", testMin),
+		("testMax", testMax),
+		("testFilter", testFilter),
+		("testImplementsEqual", testImplementsEqual),
+		("testImplementsNotEqual", testImplementsNotEqual),
+		]
 }

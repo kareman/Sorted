@@ -1,7 +1,10 @@
+
 import XCTest
 
-import SortedTests
+@testable import SortedTests
 
-var tests = [XCTestCaseEntry]()
-tests += SortedTests.allTests()
+let tests: [XCTestCaseEntry] = [
+	testCase(SortedArrayTests.allTests),
+	]
+
 XCTMain(tests)
