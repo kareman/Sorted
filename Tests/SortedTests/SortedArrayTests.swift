@@ -258,6 +258,12 @@ class SortedArrayTests: XCTestCase {
 		let sut = SortedArray(unsorted: 1...3)
 		XCTAssertTrue(sut != SortedArray(unsorted: 1...4))
 	}
+
+	func testSliceIsSortedCollection() {
+		let sut = SortedArray(sorted: 0...9)
+		let slice = sut[2...8]
+		XCTAssertEqual(slice.insertionIndex(for: 5), 5)
+	}
 }
 
 
@@ -310,5 +316,6 @@ extension SortedArrayTests {
 		("testFilter", testFilter),
 		("testImplementsEqual", testImplementsEqual),
 		("testImplementsNotEqual", testImplementsNotEqual),
+		("testSliceIsSortedCollection", testSliceIsSortedCollection),
 		]
 }

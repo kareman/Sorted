@@ -1,5 +1,5 @@
 
-public protocol SortedCollection: Collection {
+public protocol SortedCollection: Collection where SubSequence: SortedCollection {
 	/// An ordering for all elements in the collection.
 	var areInIncreasingOrder: (Element, Element) -> Bool { get }
 
@@ -8,7 +8,7 @@ public protocol SortedCollection: Collection {
 }
 
 public protocol MutableSortedCollection: SortedCollection {
-	/// Insert the element into the correct position in this sorted collection, and returns the index.
+	/// Inserts the element into the correct position in this sorted collection, and returns the index.
 	mutating func insert(_: Element) -> Index
 }
 
@@ -139,3 +139,9 @@ extension Range: SortedCollection
 where Bound: Strideable, Bound.Stride: SignedInteger { }
 
 extension DefaultIndices: SortedCollection { }
+
+extension Slice: SortedCollection where Base: SortedCollection {
+	public var areInIncreasingOrder: (Base.Element, Base.Element) -> Bool {
+		return base.areInIncreasingOrder
+	}
+}
