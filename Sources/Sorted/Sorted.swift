@@ -3,7 +3,9 @@ public protocol SortedCollection: Collection where SubSequence: SortedCollection
 	/// An ordering for all elements in the collection.
 	var areInIncreasingOrder: (Element, Element) -> Bool { get }
 
-	/// The index for this element if it were to be inserted into the collection.
+	/// The index for this element, if it were to be inserted into the collection.
+	/// - Note: if the element already occurs several times, the index to any of those,
+	/// or the index _after_ the last occurrence, may be returned.
 	func insertionIndex(for element: Element) -> Index
 }
 
@@ -17,14 +19,6 @@ extension SortedCollection where Element: Comparable {
 		return (<)
 	}
 }
-
-extension SortedCollection where Element: Equatable {
-	public func contains(_ element: Element) -> Bool {
-		let i = insertionIndex(for: element)
-		return (i != endIndex && self[i] == element)
-	}
-}
-
 
 extension Collection {
 	/// The index in the middle of this collection. Returns nil if the collection is empty.
@@ -46,6 +40,8 @@ extension SortedCollection {
 		return middle
 	}
 
+	/// The first possible index for this element, if it were to be inserted into the collection.
+	/// If the element already occurs, the index of the first occurrence will be returned.
 	public func firstInsertionIndex(of element: Element) -> Index {
 		guard let middle = indexInMiddle() else { return endIndex }
 		if areInIncreasingOrder(self[middle], element) {
@@ -54,6 +50,8 @@ extension SortedCollection {
 		return self[..<middle].firstInsertionIndex(of: element)
 	}
 
+	/// The last possible index for this element, if it were to be inserted into the collection.
+	/// If the element already occurs, the index _after_ the last occurrence will be returned.
 	public func lastInsertionIndex(of element: Element) -> Index {
 		guard let middle = indexInMiddle() else { return endIndex }
 		if areInIncreasingOrder(element, self[middle]) {
@@ -68,6 +66,11 @@ extension SortedCollection where Element: Equatable {
 	public func firstIndex(of element: Element) -> Index? {
 		let index = firstInsertionIndex(of: element)
 		return (index != endIndex && self[index] == element) ? index : nil
+	}
+
+	public func contains(_ element: Element) -> Bool {
+		let i = insertionIndex(for: element)
+		return (i != endIndex && self[i] == element)
 	}
 }
 
