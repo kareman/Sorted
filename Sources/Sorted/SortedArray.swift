@@ -5,13 +5,13 @@
 
 public struct SortedArray<Element>: RandomAccessCollection, SortedCollection {
 	public typealias Elements = [Element]
-	public typealias Indices = Elements.Indices
 	var elements: Elements
 	
 	// SortedCollection requirement
 	public let areInIncreasingOrder: (Element, Element) -> Bool
 	
 	// Collection requirements
+	public typealias Indices = Elements.Indices
 	public var startIndex: Elements.Index { return elements.startIndex }
 	public var endIndex: Elements.Index { return elements.endIndex }
 	public subscript(position: Elements.Index) -> Element { return elements[position] }
@@ -71,6 +71,23 @@ extension SortedArray where Element: Comparable {
 	/// - Precondition: `sorted` is sorted according to the `<` predicate. If you violate this condition, the behavior is undefined.
 	public init<S: Sequence>(sorted: S) where S.Iterator.Element == Element {
 		self.init(sorted: sorted, areInIncreasingOrder: <)
+	}
+}
+
+extension SortedArray {
+	/// Removes and returns the element at the specified position.
+	public mutating func remove(at i: Index) -> Element {
+		return elements.remove(at: i)
+	}
+
+	/// Removes the elements in the specified subrange from the array.
+	public mutating func removeSubrange(_ bounds: Range<Int>) {
+		elements.removeSubrange(bounds)
+	}
+
+	/// Removes all elements from the array.
+	public mutating func removeAll(keepingCapacity keepCapacity: Bool = false) {
+		elements.removeAll(keepingCapacity: keepCapacity)
 	}
 }
 
