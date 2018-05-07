@@ -3,8 +3,9 @@
 //  Many SortedArray methods are from https://github.com/ole/SortedArray
 //
 
-public struct SortedArray<Element>: Collection, SortedCollection {
+public struct SortedArray<Element>: RandomAccessCollection, SortedCollection {
 	public typealias Elements = [Element]
+	public typealias Indices = Elements.Indices
 	var elements: Elements
 	
 	// SortedCollection requirement
@@ -14,7 +15,6 @@ public struct SortedArray<Element>: Collection, SortedCollection {
 	public var startIndex: Elements.Index { return elements.startIndex }
 	public var endIndex: Elements.Index { return elements.endIndex }
 	public subscript(position: Elements.Index) -> Element { return elements[position] }
-	public func index(after i: Elements.Index) -> Elements.Index { return elements.index(after: i) }
 }
 
 extension SortedArray: MutableSortedCollection {
@@ -26,13 +26,6 @@ extension SortedArray: MutableSortedCollection {
 	}
 }
 
-extension SortedArray: BidirectionalCollection {
-	public func index(before i: Elements.Index) -> Elements.Index {
-		return elements.index(before: i)
-	}
-}
-
-extension SortedArray: RandomAccessCollection { }
 
 extension SortedArray {
 	/// Initializes an empty array.
