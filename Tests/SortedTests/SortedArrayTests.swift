@@ -125,9 +125,10 @@ class SortedArrayTests: XCTestCase {
 	}
 
 	func testIndexOfReturnsNilWhenNotFound() {
-		let sut = SortedArray(unsorted: "Hello World")
-		let index = sut.firstIndex(of: "h")
-		XCTAssertNil(index)
+		let sut = SortedArray(unsorted: [1,1,2,4,4])
+		XCTAssertNil(sut.firstIndex(of: 0))
+		XCTAssertNil(sut.firstIndex(of: 3))
+		XCTAssertNil(sut.firstIndex(of: 6))
 	}
 
 	func testIndexOfReturnsNilForEmptyArray() {
@@ -192,9 +193,10 @@ class SortedArrayTests: XCTestCase {
 	}
 
 	func testLastIndexOfReturnsNilWhenNotFound() {
-		let sut = SortedArray(unsorted: "Hello World")
-		let index = sut.lastIndex(of: "h")
-		XCTAssertNil(index)
+		let sut = SortedArray(unsorted: [1,1,2,4,4])
+		XCTAssertNil(sut.lastIndex(of: 0))
+		XCTAssertNil(sut.lastIndex(of: 3))
+		XCTAssertNil(sut.lastIndex(of: 6))
 	}
 
 	func testLastIndexOfReturnsNilForEmptyArray() {
@@ -216,7 +218,7 @@ class SortedArrayTests: XCTestCase {
 	}
 
 	func testLastIndexOfFindsLastIndexOfDuplicateElements2() {
-		let sut = SortedArray(unsorted: [1,4,4,4,4,4,4,4,4,3,2])
+		let sut = SortedArray(unsorted: [1,2,3,4,4,4,4,4,4,4,4])
 		let index = sut.lastIndex(of: 4)
 		XCTAssertEqual(index, 10)
 	}

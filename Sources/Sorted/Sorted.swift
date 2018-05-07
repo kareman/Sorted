@@ -18,121 +18,68 @@ extension SortedCollection where Element: Comparable {
 	}
 }
 
-extension SortedCollection {
-	fileprivate func _insertionIndexFromStart(for element: Element) -> Index {
-		for index in self.indices {
-			if !areInIncreasingOrder(self[index], element) {
-				return index
-			}
-		}
-		return endIndex
-	}
-
-	public func insertionIndex(for element: Element) -> Index {
-		return _insertionIndexFromStart(for: element)
-	}
-}
-
-extension SortedCollection where Self: BidirectionalCollection {
-	public func insertionIndex(for element: Element) -> Index {
-		if let last = last, areInIncreasingOrder(last, element) {
-			return endIndex
-		}
-		return _insertionIndexFromStart(for: element)
-	}
-
-	fileprivate func _insertionIndexFromEnd(for element: Element) -> Index {
-		for index in self.indices.reversed() {
-			if !areInIncreasingOrder(element, self[index]) {
-				return index
-			}
-		}
-		return startIndex
-	}
-}
-
 extension SortedCollection where Element: Equatable {
 	public func contains(_ element: Element) -> Bool {
 		let i = insertionIndex(for: element)
 		return (i != endIndex && self[i] == element)
 	}
+}
 
+
+extension Collection {
+	/// The index in the middle of this collection. Returns nil if the collection is empty.
+	fileprivate func indexInMiddle() -> Index? {
+		guard !isEmpty else { return nil }
+		return index(startIndex, offsetBy: count / 2)
+	}
+}
+
+extension SortedCollection {
+	public func insertionIndex(for element: Element) -> Index {
+		// Binary search for element.
+		guard let middle = indexInMiddle() else { return startIndex }
+		if areInIncreasingOrder(self[middle], element) {
+			return self[index(after: middle)...].insertionIndex(for: element)
+		} else if areInIncreasingOrder(element, self[middle]) {
+			return self[..<middle].insertionIndex(for: element)
+		}
+		return middle
+	}
+
+	public func firstInsertionIndex(of element: Element) -> Index {
+		guard let middle = indexInMiddle() else { return endIndex }
+		if areInIncreasingOrder(self[middle], element) {
+			return self[index(after: middle)...].firstInsertionIndex(of: element)
+		}
+		return self[..<middle].firstInsertionIndex(of: element)
+	}
+
+	public func lastInsertionIndex(of element: Element) -> Index {
+		guard let middle = indexInMiddle() else { return endIndex }
+		if areInIncreasingOrder(element, self[middle]) {
+			return self[..<middle].lastInsertionIndex(of: element)
+		}
+		return self[index(after: middle)...].lastInsertionIndex(of: element)
+	}
+}
+
+extension SortedCollection where Element: Equatable {
 	/// The index of the first occurrence of this element.
 	public func firstIndex(of element: Element) -> Index? {
-		let i = insertionIndex(for: element)
-		return (i != endIndex && self[i] == element) ? i : nil
+		let index = firstInsertionIndex(of: element)
+		return (index != endIndex && self[index] == element) ? index : nil
 	}
 }
 
 extension SortedCollection where Self: BidirectionalCollection, Element: Equatable {
 	/// The index of the last occurrence of this element.
 	public func lastIndex(of element: Element) -> Index? {
-		let i = _insertionIndexFromEnd(for: element)
-		return (i != endIndex && self[i] == element) ? i : nil
+		var index = lastInsertionIndex(of: element)
+		guard index > startIndex else { return nil }
+		formIndex(before: &index)
+		return (self[index] == element) ? index : nil
 	}
 }
-
-
-extension RandomAccessCollection {
-	/// The value in the middle of this range. Returns nil if the range is empty.
-	fileprivate func index(inMiddleOf range: Range<Index>) -> Index? {
-		guard !range.isEmpty else { return nil }
-		return index(range.lowerBound, offsetBy: distance(from: range.lowerBound, to: range.upperBound) / 2)
-	}
-}
-
-extension SortedCollection where Self: RandomAccessCollection {
-	/// Binary search for element in range.
-	fileprivate func insertionIndex(for element: Element, in range: Range<Index>) -> Index {
-		guard let middle = index(inMiddleOf: range) else { return range.upperBound }
-		if areInIncreasingOrder(self[middle], element) {
-			return insertionIndex(for: element, in: index(after: middle)..<range.upperBound)
-		} else if areInIncreasingOrder(element, self[middle]) {
-			return insertionIndex(for: element, in: range.lowerBound..<middle)
-		}
-		return middle
-	}
-
-	public func insertionIndex(for element: Element) -> Index {
-		return insertionIndex(for: element, in: startIndex..<endIndex)
-	}
-}
-
-extension SortedCollection where Self: RandomAccessCollection, Element: Equatable {
-	fileprivate func firstIndex(of element: Element, in range: Range<Index>) -> Index? {
-		guard let middle = index(inMiddleOf: range) else {
-			let index = range.upperBound
-			return (index != endIndex && self[index] == element) ? index : nil
-		}
-		if areInIncreasingOrder(self[middle], element) {
-			return firstIndex(of: element, in: index(after: middle)..<range.upperBound)
-		}
-		return firstIndex(of: element, in: range.lowerBound..<middle)
-	}
-
-	/// The index of the first occurrence of this element.
-	public func firstIndex(of element: Element) -> Index? {
-		return firstIndex(of: element, in: startIndex..<endIndex)
-	}
-
-	fileprivate func lastIndex(of element: Element, in range: Range<Index>) -> Index? {
-		guard let middle = index(inMiddleOf: range) else {
-			guard range.upperBound > startIndex else { return nil }
-			let index = self.index(before: range.upperBound)
-			return (index != endIndex && self[index] == element) ? index : nil
-		}
-		if areInIncreasingOrder(element, self[middle]) {
-			return lastIndex(of: element, in: range.lowerBound..<middle)
-		}
-		return lastIndex(of: element, in: index(after: middle)..<range.upperBound)
-	}
-
-	/// The index of the last occurrence of this element.
-	public func lastIndex(of element: Element) -> Index? {
-		return lastIndex(of: element, in: startIndex..<endIndex)
-	}
-}
-
 
 
 extension Range: SortedCollection
