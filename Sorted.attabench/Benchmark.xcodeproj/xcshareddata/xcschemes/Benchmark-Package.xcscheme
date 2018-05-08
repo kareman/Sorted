@@ -14,6 +14,20 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
+               BlueprintIdentifier = "OptionParser::OptionParser"
+               BuildableName = "OptionParser.framework"
+               BlueprintName = "OptionParser"
+               ReferencedContainer = "container:Benchmark.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
                BlueprintIdentifier = "Benchmark::Benchmark"
                BuildableName = "Benchmark"
                BlueprintName = "Benchmark"
@@ -42,37 +56,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "Sorted::Sorted"
-               BuildableName = "Sorted.framework"
-               BlueprintName = "Sorted"
-               ReferencedContainer = "container:Benchmark.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
                BlueprintIdentifier = "Benchmarking::Benchmarking"
                BuildableName = "Benchmarking.framework"
                BlueprintName = "Benchmarking"
-               ReferencedContainer = "container:Benchmark.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "OptionParser::OptionParser"
-               BuildableName = "OptionParser.framework"
-               BlueprintName = "OptionParser"
                ReferencedContainer = "container:Benchmark.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -101,9 +87,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "Benchmark::Benchmark"
-            BuildableName = "Benchmark"
-            BlueprintName = "Benchmark"
+            BlueprintIdentifier = "OptionParser::OptionParser"
+            BuildableName = "OptionParser.framework"
+            BlueprintName = "OptionParser"
             ReferencedContainer = "container:Benchmark.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

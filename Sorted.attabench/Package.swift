@@ -8,10 +8,11 @@ let package = Package(
 	],
 	dependencies: [
 		.package(url: "https://github.com/kareman/Benchmarking", .branch("Swift4.1")),
-		.package(url: "../../Sorted", .branch("master"))
+		//.package(url: "../../Sorted", .branch("master"))
 	],
 	targets: [
-		.target(name: "Benchmark", dependencies: ["Benchmarking", "Sorted"], path: "Sources"),
+		.target(name: "Benchmark", dependencies: ["Benchmarking"], path: "Sources"),
+		//.target(name: "Sorted", dependencies: [], path: "../../Sorted/Sources"),
 		],
 	swiftLanguageVersions: [4]
 )
