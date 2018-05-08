@@ -1,0 +1,34 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "Benchmarking",
+        "repositoryURL": "https://github.com/kareman/Benchmarking",
+        "state": {
+          "branch": "Swift4.1",
+          "revision": "ea7f0ef87a4ead3a6b8caf73271af4dce1fab33b",
+          "version": null
+        }
+      },
+      {
+        "package": "OptionParser",
+        "repositoryURL": "https://github.com/attaswift/OptionParser",
+        "state": {
+          "branch": null,
+          "revision": "049f1e2b9d4550c25d99c54e17a045149e723afb",
+          "version": "1.0.0"
+        }
+      },
+      {
+        "package": "Sorted",
+        "repositoryURL": "/Users/karemorstol/Programming/Swift-dev/Sorted protocol/Sorted",
+        "state": {
+          "branch": "master",
+          "revision": "e975f16fb3d8bd0c61cbd3d2e16c8e48c18524ad",
+          "version": null
+        }
+      }
+    ]
+  },
+  "version": 1
+}
