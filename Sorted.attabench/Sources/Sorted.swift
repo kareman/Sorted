@@ -137,8 +137,35 @@ extension SortedCollection where Element: Equatable {
 }
 
 
+// MARK: binarySearchNonRecursive
 
+extension SortedCollection where Element: Equatable {
+	/// The first possible index for this element, if it were to be inserted into the collection.
+	/// If the element already occurs, the index of the first occurrence will be returned.
+	@inlinable
+	public func binarySearchNonRecursive_firstInsertionIndex(of element: Element) -> Index {
+		var searchRange = startIndex..<endIndex
+		var count = self.count
+		while !searchRange.isEmpty {
+			count = count / 2
+			let middle = index(searchRange.lowerBound, offsetBy: count)
+			if areInIncreasingOrder(self[middle], element) {
+				searchRange = index(after: middle)..<searchRange.upperBound
+				count -= 1
+			} else {
+				searchRange = searchRange.lowerBound..<middle
+			}
+		}
+		return searchRange.lowerBound
+	}
 
+	/// The index of the first occurrence of this element.
+	@inlinable
+	public func binarySearchNonRecursive_firstIndex(of element: Element) -> Index? {
+		let index = binarySearchNonRecursive_firstInsertionIndex(of: element)
+		return (index != endIndex && self[index] == element) ? index : nil
+	}
+}
 
 
 

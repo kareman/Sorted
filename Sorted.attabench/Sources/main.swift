@@ -93,4 +93,14 @@ benchmark.addTask(title: "forward_firstIndex") { input in
 	}
 }
 
+benchmark.addTask(title: "binarySearchNonRecursive_firstIndex") { input in
+	let indices = input.indices
+
+	return { timer in
+		for value in indices {
+			guard indices.binarySearchNonRecursive_firstIndex(of: value) == value else { fatalError() }
+		}
+	}
+}
+
 benchmark.start()
