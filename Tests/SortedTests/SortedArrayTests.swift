@@ -171,6 +171,15 @@ class SortedArrayTests: XCTestCase {
 		XCTAssertEqual(index, 2)
 	}
 
+	func testRange() {
+		let sut = 0..<1025
+		for i in sut {
+			XCTAssertEqual(sut.firstIndex(of: i), i)
+			XCTAssertEqual(sut.lastIndex(of: i), i)
+			XCTAssertEqual(sut.insertionIndex(for: i), i)
+		}
+	}
+
 	func testLastIndexOfFindsElementInMiddle() {
 		let sut = SortedArray(unsorted: ["a","z","r","k"])
 		let index = sut.lastIndex(of: "k")
@@ -300,6 +309,7 @@ extension SortedArrayTests {
 		("testIndexOfFindsFirstIndexOfDuplicateElements3", testIndexOfFindsFirstIndexOfDuplicateElements3),
 		("testIndexOfFindsFirstIndexOfDuplicateElements4", testIndexOfFindsFirstIndexOfDuplicateElements4),
 		("testIndexOfFindsFirstIndexOfDuplicateElements5", testIndexOfFindsFirstIndexOfDuplicateElements5),
+		("testRange", testRange),
 		("testLastIndexOfFindsElementInMiddle", testLastIndexOfFindsElementInMiddle),
 		("testLastIndexOfFindsFirstElement", testLastIndexOfFindsFirstElement),
 		("testLastIndexOfFindsLastElement", testLastIndexOfFindsLastElement),
