@@ -73,6 +73,16 @@ benchmark.addTask(title: "binarySearch_firstIndex") { input in
 	}
 }
 
+benchmark.addTask(title: "binarySearchWithCount_firstIndex") { input in
+	let indices = input.indices
+
+	return { timer in
+		for value in indices {
+			guard indices.binarySearch2_firstIndex(of: value) == value else { fatalError("binarySearchWithCount_firstIndex") }
+		}
+	}
+}
+
 benchmark.addTask(title: "forward_firstIndex") { input in
 	let indices = input.indices
 

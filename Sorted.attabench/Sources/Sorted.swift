@@ -104,6 +104,44 @@ extension SortedCollection where Element: Equatable {
 	}
 }
 
+// MARK: binarySearch2
+
+extension Collection {
+	/// The index in the middle of this collection. Returns nil if the collection is empty.
+	@usableFromInline
+	func binarySearch2_indexInMiddle(count: Int) -> (Index, Int)? {
+		guard !isEmpty else { return nil }
+		let newcount = (count) / 2
+		return (index(startIndex, offsetBy: newcount), newcount)
+	}
+}
+
+extension SortedCollection where Element: Equatable {
+	/// The first possible index for this element, if it were to be inserted into the collection.
+	/// If the element already occurs, the index of the first occurrence will be returned.
+	@inlinable
+	public func binarySearch2_firstInsertionIndex(of element: Element, count: Int) -> Index {
+		guard let (middle, newcount) = binarySearch2_indexInMiddle(count: count) else { return endIndex }
+		if areInIncreasingOrder(self[middle], element) {
+			return self[index(after: middle)...].binarySearch2_firstInsertionIndex(of: element, count: newcount-1)
+		}
+		return self[..<middle].binarySearch2_firstInsertionIndex(of: element, count: newcount)
+	}
+
+	/// The index of the first occurrence of this element.
+	@inlinable
+	public func binarySearch2_firstIndex(of element: Element) -> Index? {
+		let index = binarySearch2_firstInsertionIndex(of: element, count: self.count)
+		return (index != endIndex && self[index] == element) ? index : nil
+	}
+}
+
+
+
+
+
+
+
 extension SortedCollection where Element: Equatable {
 	@inlinable
 	public func sorted_contains(_ element: Element) -> Bool {
