@@ -23,51 +23,51 @@
 		OBJ_52 /* Benchmarking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "Benchmarking::Benchmarking::Product" /* Benchmarking.framework */; };
 		OBJ_53 /* OptionParser.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "OptionParser::OptionParser::Product" /* OptionParser.framework */; };
 		OBJ_54 /* BenchmarkIPC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "Benchmarking::BenchmarkIPC::Product" /* BenchmarkIPC.framework */; };
-		OBJ_65 /* BenchmarkIPC.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_15 /* BenchmarkIPC.swift */; };
+		OBJ_65 /* BenchmarkIPC.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_24 /* BenchmarkIPC.swift */; };
 		OBJ_72 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_6 /* Package.swift */; };
-		OBJ_77 /* Benchmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_17 /* Benchmark.swift */; };
-		OBJ_78 /* Complain.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_18 /* Complain.swift */; };
-		OBJ_79 /* InputGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_19 /* InputGenerator.swift */; };
-		OBJ_80 /* Noop.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_20 /* Noop.swift */; };
-		OBJ_81 /* Output.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_21 /* Output.swift */; };
-		OBJ_82 /* Run.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_22 /* Run.swift */; };
-		OBJ_83 /* Shuffle.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_23 /* Shuffle.swift */; };
-		OBJ_84 /* Timer.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_24 /* Timer.swift */; };
+		OBJ_77 /* Benchmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_15 /* Benchmark.swift */; };
+		OBJ_78 /* Complain.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_16 /* Complain.swift */; };
+		OBJ_79 /* InputGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_17 /* InputGenerator.swift */; };
+		OBJ_80 /* Noop.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_18 /* Noop.swift */; };
+		OBJ_81 /* Output.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_19 /* Output.swift */; };
+		OBJ_82 /* Run.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_20 /* Run.swift */; };
+		OBJ_83 /* Shuffle.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_21 /* Shuffle.swift */; };
+		OBJ_84 /* Timer.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_22 /* Timer.swift */; };
 		OBJ_86 /* OptionParser.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "OptionParser::OptionParser::Product" /* OptionParser.framework */; };
 		OBJ_87 /* BenchmarkIPC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "Benchmarking::BenchmarkIPC::Product" /* BenchmarkIPC.framework */; };
 		OBJ_95 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_25 /* Package.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		BA8F32D920A24BB000E7EA11 /* PBXContainerItemProxy */ = {
+		BA6B805520A4AF4C00F5D1A4 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "Benchmarking::Benchmarking";
 			remoteInfo = Benchmarking;
 		};
-		BA8F32DA20A24BB000E7EA11 /* PBXContainerItemProxy */ = {
+		BA6B805620A4AF4C00F5D1A4 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "OptionParser::OptionParser";
 			remoteInfo = OptionParser;
 		};
-		BA8F32DB20A24BB000E7EA11 /* PBXContainerItemProxy */ = {
+		BA6B805720A4AF4C00F5D1A4 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "Benchmarking::BenchmarkIPC";
 			remoteInfo = BenchmarkIPC;
 		};
-		BA8F32DC20A24BB000E7EA11 /* PBXContainerItemProxy */ = {
+		BA6B805820A4AF4C00F5D1A4 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "OptionParser::OptionParser";
 			remoteInfo = OptionParser;
 		};
-		BA8F32DD20A24BB000E7EA11 /* PBXContainerItemProxy */ = {
+		BA6B805920A4AF4C00F5D1A4 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
@@ -81,16 +81,16 @@
 		"Benchmarking::BenchmarkIPC::Product" /* BenchmarkIPC.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = BenchmarkIPC.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		"Benchmarking::Benchmarking::Product" /* Benchmarking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Benchmarking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		OBJ_10 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
-		OBJ_15 /* BenchmarkIPC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BenchmarkIPC.swift; sourceTree = "<group>"; };
-		OBJ_17 /* Benchmark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Benchmark.swift; sourceTree = "<group>"; };
-		OBJ_18 /* Complain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Complain.swift; sourceTree = "<group>"; };
-		OBJ_19 /* InputGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputGenerator.swift; sourceTree = "<group>"; };
-		OBJ_20 /* Noop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Noop.swift; sourceTree = "<group>"; };
-		OBJ_21 /* Output.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Output.swift; sourceTree = "<group>"; };
-		OBJ_22 /* Run.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Run.swift; sourceTree = "<group>"; };
-		OBJ_23 /* Shuffle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shuffle.swift; sourceTree = "<group>"; };
-		OBJ_24 /* Timer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Timer.swift; sourceTree = "<group>"; };
-		OBJ_25 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = Package.swift; path = "/Users/karemorstol/Programming/Swift-dev/Sorted protocol/Sorted/Sorted.attabench/.build/checkouts/Benchmarking-7286201976066619591/Package.swift"; sourceTree = "<group>"; };
+		OBJ_15 /* Benchmark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Benchmark.swift; sourceTree = "<group>"; };
+		OBJ_16 /* Complain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Complain.swift; sourceTree = "<group>"; };
+		OBJ_17 /* InputGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputGenerator.swift; sourceTree = "<group>"; };
+		OBJ_18 /* Noop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Noop.swift; sourceTree = "<group>"; };
+		OBJ_19 /* Output.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Output.swift; sourceTree = "<group>"; };
+		OBJ_20 /* Run.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Run.swift; sourceTree = "<group>"; };
+		OBJ_21 /* Shuffle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shuffle.swift; sourceTree = "<group>"; };
+		OBJ_22 /* Timer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Timer.swift; sourceTree = "<group>"; };
+		OBJ_24 /* BenchmarkIPC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BenchmarkIPC.swift; sourceTree = "<group>"; };
+		OBJ_25 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = Package.swift; path = "/Users/karemorstol/Programming/Swift-dev/Sorted protocol/Sorted/Sorted Random access.attabench/.build/checkouts/Benchmarking-6954266278992621177/Package.swift"; sourceTree = "<group>"; };
 		OBJ_28 /* Argument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Argument.swift; sourceTree = "<group>"; };
 		OBJ_29 /* Command.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Command.swift; sourceTree = "<group>"; };
 		OBJ_30 /* Help.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Help.swift; sourceTree = "<group>"; };
@@ -100,7 +100,7 @@
 		OBJ_34 /* Parameter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parameter.swift; sourceTree = "<group>"; };
 		OBJ_35 /* ParseContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParseContext.swift; sourceTree = "<group>"; };
 		OBJ_36 /* Syntax.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Syntax.swift; sourceTree = "<group>"; };
-		OBJ_37 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = Package.swift; path = "/Users/karemorstol/Programming/Swift-dev/Sorted protocol/Sorted/Sorted.attabench/.build/checkouts/OptionParser-5759227418516676222/Package.swift"; sourceTree = "<group>"; };
+		OBJ_37 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = Package.swift; path = "/Users/karemorstol/Programming/Swift-dev/Sorted protocol/Sorted/Sorted Random access.attabench/.build/checkouts/OptionParser-1550012825409644538/Package.swift"; sourceTree = "<group>"; };
 		OBJ_6 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		OBJ_8 /* Sorted.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sorted.swift; sourceTree = "<group>"; };
 		OBJ_9 /* SortedArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortedArray.swift; sourceTree = "<group>"; };
@@ -163,36 +163,36 @@
 		OBJ_13 /* Benchmarking */ = {
 			isa = PBXGroup;
 			children = (
-				OBJ_14 /* BenchmarkIPC */,
-				OBJ_16 /* Benchmarking */,
+				OBJ_14 /* Benchmarking */,
+				OBJ_23 /* BenchmarkIPC */,
 				OBJ_25 /* Package.swift */,
 			);
 			name = Benchmarking;
 			sourceTree = SOURCE_ROOT;
 		};
-		OBJ_14 /* BenchmarkIPC */ = {
+		OBJ_14 /* Benchmarking */ = {
 			isa = PBXGroup;
 			children = (
-				OBJ_15 /* BenchmarkIPC.swift */,
-			);
-			name = BenchmarkIPC;
-			path = ".build/checkouts/Benchmarking-7286201976066619591/BenchmarkIPC";
-			sourceTree = SOURCE_ROOT;
-		};
-		OBJ_16 /* Benchmarking */ = {
-			isa = PBXGroup;
-			children = (
-				OBJ_17 /* Benchmark.swift */,
-				OBJ_18 /* Complain.swift */,
-				OBJ_19 /* InputGenerator.swift */,
-				OBJ_20 /* Noop.swift */,
-				OBJ_21 /* Output.swift */,
-				OBJ_22 /* Run.swift */,
-				OBJ_23 /* Shuffle.swift */,
-				OBJ_24 /* Timer.swift */,
+				OBJ_15 /* Benchmark.swift */,
+				OBJ_16 /* Complain.swift */,
+				OBJ_17 /* InputGenerator.swift */,
+				OBJ_18 /* Noop.swift */,
+				OBJ_19 /* Output.swift */,
+				OBJ_20 /* Run.swift */,
+				OBJ_21 /* Shuffle.swift */,
+				OBJ_22 /* Timer.swift */,
 			);
 			name = Benchmarking;
-			path = ".build/checkouts/Benchmarking-7286201976066619591/Benchmarking";
+			path = ".build/checkouts/Benchmarking-6954266278992621177/Benchmarking";
+			sourceTree = SOURCE_ROOT;
+		};
+		OBJ_23 /* BenchmarkIPC */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_24 /* BenchmarkIPC.swift */,
+			);
+			name = BenchmarkIPC;
+			path = ".build/checkouts/Benchmarking-6954266278992621177/BenchmarkIPC";
 			sourceTree = SOURCE_ROOT;
 		};
 		OBJ_26 /* OptionParser 1.0.0 */ = {
@@ -218,16 +218,16 @@
 				OBJ_36 /* Syntax.swift */,
 			);
 			name = OptionParser;
-			path = ".build/checkouts/OptionParser-5759227418516676222/OptionParser";
+			path = ".build/checkouts/OptionParser-1550012825409644538/OptionParser";
 			sourceTree = SOURCE_ROOT;
 		};
 		OBJ_38 /* Products */ = {
 			isa = PBXGroup;
 			children = (
 				"OptionParser::OptionParser::Product" /* OptionParser.framework */,
+				"Benchmarking::Benchmarking::Product" /* Benchmarking.framework */,
 				"Benchmark::Benchmark::Product" /* Benchmark */,
 				"Benchmarking::BenchmarkIPC::Product" /* BenchmarkIPC.framework */,
-				"Benchmarking::Benchmarking::Product" /* Benchmarking.framework */,
 			);
 			name = Products;
 			sourceTree = BUILT_PRODUCTS_DIR;
@@ -479,27 +479,27 @@
 		OBJ_55 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "Benchmarking::Benchmarking" /* Benchmarking */;
-			targetProxy = BA8F32D920A24BB000E7EA11 /* PBXContainerItemProxy */;
+			targetProxy = BA6B805520A4AF4C00F5D1A4 /* PBXContainerItemProxy */;
 		};
 		OBJ_57 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "OptionParser::OptionParser" /* OptionParser */;
-			targetProxy = BA8F32DC20A24BB000E7EA11 /* PBXContainerItemProxy */;
+			targetProxy = BA6B805820A4AF4C00F5D1A4 /* PBXContainerItemProxy */;
 		};
 		OBJ_59 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "Benchmarking::BenchmarkIPC" /* BenchmarkIPC */;
-			targetProxy = BA8F32DD20A24BB000E7EA11 /* PBXContainerItemProxy */;
+			targetProxy = BA6B805920A4AF4C00F5D1A4 /* PBXContainerItemProxy */;
 		};
 		OBJ_88 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "OptionParser::OptionParser" /* OptionParser */;
-			targetProxy = BA8F32DA20A24BB000E7EA11 /* PBXContainerItemProxy */;
+			targetProxy = BA6B805620A4AF4C00F5D1A4 /* PBXContainerItemProxy */;
 		};
 		OBJ_89 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "Benchmarking::BenchmarkIPC" /* BenchmarkIPC */;
-			targetProxy = BA8F32DB20A24BB000E7EA11 /* PBXContainerItemProxy */;
+			targetProxy = BA6B805720A4AF4C00F5D1A4 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 

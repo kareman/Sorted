@@ -28,9 +28,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "Benchmark::Benchmark"
-               BuildableName = "Benchmark"
-               BlueprintName = "Benchmark"
+               BlueprintIdentifier = "Benchmarking::BenchmarkIPC"
+               BuildableName = "BenchmarkIPC.framework"
+               BlueprintName = "BenchmarkIPC"
                ReferencedContainer = "container:Benchmark.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -42,9 +42,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "Benchmarking::BenchmarkIPC"
-               BuildableName = "BenchmarkIPC.framework"
-               BlueprintName = "BenchmarkIPC"
+               BlueprintIdentifier = "Benchmark::Benchmark"
+               BuildableName = "Benchmark"
+               BlueprintName = "Benchmark"
                ReferencedContainer = "container:Benchmark.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>

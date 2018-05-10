@@ -50,7 +50,7 @@ extension SortedCollection where Element: Equatable {
 	}
 }
 
-// MARK: binary search
+// MARK: binary search with recursion
 
 extension Collection {
 	/// The index in the middle of this collection. Returns nil if the collection is empty.
@@ -104,12 +104,12 @@ extension SortedCollection where Element: Equatable {
 	}
 }
 
-// MARK: binarySearch2
+// MARK: binary research with recursion, cashing ‘count’.
 
 extension Collection {
 	/// The index in the middle of this collection. Returns nil if the collection is empty.
 	@usableFromInline
-	func binarySearch2_indexInMiddle(count: Int) -> (Index, Int)? {
+	func binarySearchCacheCount_indexInMiddle(count: Int) -> (Index, Int)? {
 		guard !isEmpty else { return nil }
 		let newcount = (count) / 2
 		return (index(startIndex, offsetBy: newcount), newcount)
@@ -120,18 +120,18 @@ extension SortedCollection where Element: Equatable {
 	/// The first possible index for this element, if it were to be inserted into the collection.
 	/// If the element already occurs, the index of the first occurrence will be returned.
 	@inlinable
-	public func binarySearch2_firstInsertionIndex(of element: Element, count: Int) -> Index {
-		guard let (middle, newcount) = binarySearch2_indexInMiddle(count: count) else { return endIndex }
+	public func binarySearchCacheCount_firstInsertionIndex(of element: Element, count: Int) -> Index {
+		guard let (middle, newcount) = binarySearchCacheCount_indexInMiddle(count: count) else { return endIndex }
 		if areInIncreasingOrder(self[middle], element) {
-			return self[index(after: middle)...].binarySearch2_firstInsertionIndex(of: element, count: newcount-1)
+			return self[index(after: middle)...].binarySearchCacheCount_firstInsertionIndex(of: element, count: newcount-1)
 		}
-		return self[..<middle].binarySearch2_firstInsertionIndex(of: element, count: newcount)
+		return self[..<middle].binarySearchCacheCount_firstInsertionIndex(of: element, count: newcount)
 	}
 
 	/// The index of the first occurrence of this element.
 	@inlinable
-	public func binarySearch2_firstIndex(of element: Element) -> Index? {
-		let index = binarySearch2_firstInsertionIndex(of: element, count: self.count)
+	public func binarySearchCacheCount_firstIndex(of element: Element) -> Index? {
+		let index = binarySearchCacheCount_firstInsertionIndex(of: element, count: self.count)
 		return (index != endIndex && self[index] == element) ? index : nil
 	}
 }
@@ -144,8 +144,8 @@ extension SortedCollection where Element: Equatable {
 	/// If the element already occurs, the index of the first occurrence will be returned.
 	@inlinable
 	public func binarySearchNonRecursive_firstInsertionIndex(of element: Element) -> Index {
-		var searchRange = startIndex..<endIndex
-		var count = self.count
+		var searchRange = startIndex..<endIndex,
+		    count = self.count
 		while !searchRange.isEmpty {
 			count = count / 2
 			let middle = index(searchRange.lowerBound, offsetBy: count)
@@ -169,24 +169,6 @@ extension SortedCollection where Element: Equatable {
 
 
 
-extension SortedCollection where Element: Equatable {
-	@inlinable
-	public func sorted_contains(_ element: Element) -> Bool {
-		let i = binarySearch_insertionIndex(for: element)
-		return (i != endIndex && self[i] == element)
-	}
-}
-
-extension SortedCollection where Self: BidirectionalCollection, Element: Equatable {
-	/// The index of the last occurrence of this element.
-	@inlinable
-	public func binarySearch_lastIndex(of element: Element) -> Index? {
-		var index = binarySearch_lastInsertionIndex(of: element)
-		guard index > startIndex else { return nil }
-		formIndex(before: &index)
-		return (self[index] == element) ? index : nil
-	}
-}
 
 
 extension Range: SortedCollection

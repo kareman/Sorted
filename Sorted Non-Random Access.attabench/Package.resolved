@@ -18,15 +18,6 @@
           "revision": "049f1e2b9d4550c25d99c54e17a045149e723afb",
           "version": "1.0.0"
         }
-      },
-      {
-        "package": "Sorted",
-        "repositoryURL": "/Users/karemorstol/Programming/Swift-dev/Sorted protocol/Sorted",
-        "state": {
-          "branch": "master",
-          "revision": "e975f16fb3d8bd0c61cbd3d2e16c8e48c18524ad",
-          "version": null
-        }
       }
     ]
   },
