@@ -171,8 +171,16 @@ class SortedArrayTests: XCTestCase {
 		XCTAssertEqual(index, 2)
 	}
 
+	/// test with both odd and even number of elements.
 	func testRange() {
-		let sut = 0..<1025
+		var sut = 0..<1023
+		for i in sut {
+			XCTAssertEqual(sut.firstIndex(of: i), i)
+			XCTAssertEqual(sut.lastIndex(of: i), i)
+			XCTAssertEqual(sut.insertionIndex(for: i), i)
+		}
+
+		sut = 0..<1024
 		for i in sut {
 			XCTAssertEqual(sut.firstIndex(of: i), i)
 			XCTAssertEqual(sut.lastIndex(of: i), i)
