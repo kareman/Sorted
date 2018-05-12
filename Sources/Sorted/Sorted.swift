@@ -23,7 +23,7 @@ extension SortedCollection where Element: Comparable {
 extension SortedCollection {
 	public func insertionIndex(for element: Element) -> Index {
 		var searchRange = startIndex..<endIndex,
-		count = self.count
+		    count = self.count
 		while !searchRange.isEmpty {
 			count = count / 2
 			let middle = index(searchRange.lowerBound, offsetBy: count)
@@ -61,7 +61,7 @@ extension SortedCollection {
 	/// If the element already occurs, the index _after_ the last occurrence will be returned.
 	func lastInsertionIndex(of element: Element) -> Index {
 		var searchRange = startIndex..<endIndex,
-		count = self.count
+		    count = self.count
 		while !searchRange.isEmpty {
 			count = count / 2
 			let middle = index(searchRange.lowerBound, offsetBy: count)

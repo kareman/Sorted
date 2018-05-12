@@ -9,7 +9,7 @@ class SortedArrayTests: XCTestCase {
 			let darwinTestCount = SortedArrayTests.defaultTestSuite.testCaseCount
 			let linuxTestCount = SortedArrayTests.allTests.count
 			XCTAssertEqual(linuxTestCount, darwinTestCount,
-								"allTests (used for testing on Linux) is missing \(darwinTestCount - linuxTestCount) tests")
+				"allTests (used for testing on Linux) is missing \(darwinTestCount - linuxTestCount) tests")
 		#endif
 	}
 
@@ -147,7 +147,7 @@ class SortedArrayTests: XCTestCase {
 	}
 
 	func testIndexOfFindsFirstIndexOfDuplicateElements2() {
-		let sut = SortedArray(unsorted: [1,4,4,4,4,4,4,4,4,3,2])
+		let sut = SortedArray(unsorted: [1,2,3,4,4,4,4,4,4,4,4])
 		let index = sut.firstIndex(of: 4)
 		XCTAssertEqual(index, 3)
 	}
@@ -243,7 +243,7 @@ class SortedArrayTests: XCTestCase {
 		XCTAssertEqual(index, 9)
 	}
 
-	func testsContains() {
+	func testContains() {
 		let sut = SortedArray(unsorted: "Lorem ipsum")
 		XCTAssertTrue(sut.contains(" "))
 		XCTAssertFalse(sut.contains("a"))
@@ -327,7 +327,7 @@ extension SortedArrayTests {
 		("testLastIndexOfFindsLastIndexOfDuplicateElements1", testLastIndexOfFindsLastIndexOfDuplicateElements1),
 		("testLastIndexOfFindsLastIndexOfDuplicateElements2", testLastIndexOfFindsLastIndexOfDuplicateElements2),
 		("testLastIndexOfFindsLastIndexOfDuplicateElements3", testLastIndexOfFindsLastIndexOfDuplicateElements3),
-		("testsContains", testsContains),
+		("testsContains", testContains),
 		("testMin", testMin),
 		("testMax", testMax),
 		("testFilter", testFilter),
